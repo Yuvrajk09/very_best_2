@@ -1,0 +1,83 @@
+<% was_validated = user.errors.any? %>
+
+<%= form_with(model: user, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for dish_type start -->
+  <div class="form-group">
+    <% dish_type_class = "form-control" %>
+    <% dish_type_was_invalid = user.errors.include?(:dish_type) %>
+
+    <% if was_validated %>
+      <% if dish_type_was_invalid %>
+        <% dish_type_class << " is-invalid" %>
+      <% else %>
+        <% dish_type_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :dish_type %>
+    <!-- Input for dish_type start -->
+    <%= f.text_field :dish_type, class: dish_type_class, placeholder: "Enter dish type" %>
+    <!-- Input for dish_type end -->
+    <% if dish_type_was_invalid %>
+      <% user.errors.full_messages_for(:dish_type).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for dish_type end -->
+  <!-- Label and input for user_email start -->
+  <div class="form-group">
+    <% user_email_class = "form-control" %>
+    <% user_email_was_invalid = user.errors.include?(:user_email) %>
+
+    <% if was_validated %>
+      <% if user_email_was_invalid %>
+        <% user_email_class << " is-invalid" %>
+      <% else %>
+        <% user_email_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_email %>
+    <!-- Input for user_email start -->
+    <%= f.text_field :user_email, class: user_email_class, placeholder: "Enter user email" %>
+    <!-- Input for user_email end -->
+    <% if user_email_was_invalid %>
+      <% user.errors.full_messages_for(:user_email).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_email end -->
+  <!-- Label and input for name start -->
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = user.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+    <!-- Input for name start -->
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <!-- Input for name end -->
+    <% if name_was_invalid %>
+      <% user.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for name end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
