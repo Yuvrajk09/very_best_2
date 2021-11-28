@@ -1,7 +1,6 @@
 <% was_validated = venue.errors.any? %>
 
 <%= form_with(model: venue, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for dish_id start -->
   <div class="form-group">
     <% dish_class = "form-control" %>
     <% dish_was_invalid = venue.errors.include?(:dish) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :dish_id %>
-    <!-- Input for dish_id start -->
     <%= f.collection_select :dish_id, Dish.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for dish_id end -->
     <% if dish_was_invalid %>
       <% venue.errors.full_messages_for(:dish).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for dish_id end -->
-  <!-- Label and input for venue_name start -->
   <div class="form-group">
     <% venue_name_class = "form-control" %>
     <% venue_name_was_invalid = venue.errors.include?(:venue_name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :venue_name %>
-    <!-- Input for venue_name start -->
     <%= f.text_field :venue_name, class: venue_name_class, placeholder: "Enter venue name" %>
-    <!-- Input for venue_name end -->
     <% if venue_name_was_invalid %>
       <% venue.errors.full_messages_for(:venue_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for venue_name end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
