@@ -1,6 +1,9 @@
 class Dish < ApplicationRecord
   # Direct associations
 
+  has_many   :cuisines,
+             :dependent => :destroy
+
   has_many   :venues,
              :dependent => :destroy
 
