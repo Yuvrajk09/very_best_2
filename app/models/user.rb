@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :venues,
+             :through => :favorite_dishes,
+             :source => :venues
+
   # Validations
 
   # Scopes
