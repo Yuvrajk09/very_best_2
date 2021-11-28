@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Dish</dt>
       <!-- Display dish_id start -->
-      <dd><%= venue.dish_id %></dd>
+      <dd>
+        <% if @venue.famous_dish.present? %>
+          <%= link_to venue.famous_dish, venue.famous_dish %>
+        <% end %>
+      </dd>
       <!-- Display dish_id end -->
 
       <dt>Venue name</dt>
