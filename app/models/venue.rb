@@ -1,6 +1,10 @@
 class Venue < ApplicationRecord
   # Direct associations
 
+  belongs_to :famous_dish,
+             :class_name => "Dish",
+             :foreign_key => "dish_id"
+
   # Indirect associations
 
   # Validations
