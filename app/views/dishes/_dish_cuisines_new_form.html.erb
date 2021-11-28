@@ -1,0 +1,22 @@
+<!-- Form cuisine start -->
+<%= form_with(model: @cuisine, local: true) do |f| %>
+<!-- Form cuisine end -->
+
+  <!-- Label and input for name start -->
+  <div class="form-group">
+    <%= f.label :name %>
+
+    <!-- Input for name start -->
+    <%= f.text_field :name, class: "form-control" %>
+    <!-- Input for name end -->
+  </div>
+  <!-- Label and input for name end -->
+
+  <!-- Label and input for dish_id start -->
+  <!-- Input for dish_id start -->
+  <%= f.hidden_field :dish_id, value: @dish.id %>
+  <!-- Input for dish_id end -->
+  <!-- Label and input for dish_id end -->
+
+  <%= f.submit "Create cuisine", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

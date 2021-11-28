@@ -24,7 +24,12 @@ class CuisinesController < ApplicationController
     @cuisine = Cuisine.new(cuisine_params)
 
     if @cuisine.save
-      redirect_to @cuisine, notice: 'Cuisine was successfully created.'
+      message = 'Cuisine was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @cuisine, notice: message
+      end
     else
       render :new
     end
