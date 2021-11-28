@@ -13,4 +13,12 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :venues do
+    assign_each do |user, venues|
+      venues.select do |v|
+        v.id.in?(user.venues.map(&:id))
+      end
+    end
+  end
+
 end
