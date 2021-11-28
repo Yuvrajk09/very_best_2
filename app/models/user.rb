@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :favorite_dishes,
+             :class_name => "Dish",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
