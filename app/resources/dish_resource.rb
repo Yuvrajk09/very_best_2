@@ -9,6 +9,8 @@ class DishResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :cuisines
+
   has_many   :venues
 
   belongs_to :user
