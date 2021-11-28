@@ -7,6 +7,10 @@ class VenueResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :famous_dish,
+             resource: DishResource,
+             foreign_key: :dish_id
+
   # Indirect associations
 
 end
