@@ -2,10 +2,10 @@ class Dish < ApplicationRecord
   # Direct associations
 
   has_many   :cuisines,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :venues,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
@@ -18,5 +18,4 @@ class Dish < ApplicationRecord
   def to_s
     dish_type
   end
-
 end
